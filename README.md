@@ -62,7 +62,6 @@ initializes the number of generations to 1.
 of the moves of each knight using the function check_moves() defined in the Knight class.
 * evaluate(): This function evaluates the fitness of every individual/knight in the population using the
 function evaluate_fitness() defined in the Knight class and returns the best knight with its fitness.
-3 Dr. Meriem SEBAI, USTHB
 * tournament_selection(size): To select parental combinations for crossover, tournament selection is
 employed with a sample size of n. In tournament selection, n knights are randomly sampled from the
 population, and a tournament is conducted on these samples by choosing the two best ones based on
