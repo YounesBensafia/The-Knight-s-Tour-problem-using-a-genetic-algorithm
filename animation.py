@@ -24,7 +24,7 @@ def draw_board():
             color = white if (row + col) % 2 == 0 else black
             pygame.draw.rect(screen, color, (col * square_size, row * square_size, square_size, square_size))
  
-knight_image = pygame.image.load('chess.png')
+knight_image = pygame.image.load('knight.png')
 knight_image = pygame.transform.scale(knight_image, (square_size, square_size))
 
 def draw_knight(position):
@@ -42,10 +42,11 @@ def animate(movs):
         draw_knight(position)
         pygame.display.flip()
         time.sleep(0.5) 
+    
+    pygame.quit()
 
 example_path = [(0, 0), (2, 1), (4, 2), (6, 3), (7, 5), (5, 6), (3, 7), (1, 6)]
 
 animate(example_path)
 
-time.sleep(2)
-pygame.quit()
+
