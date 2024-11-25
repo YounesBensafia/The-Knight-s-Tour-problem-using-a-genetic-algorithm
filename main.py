@@ -1,16 +1,19 @@
 from  Population import Population
-
-def main():
-    population_size = 50
-    population = Population(population_size)
-    while True:
-        population.check_population()
-        bestSolution, maxFit= population.evaluate ( )
-        print("Best solution: ", maxFit)
-        if maxFit == 64:
-            print('done')
-            break
-        population.create_new_generation ()
+from animation import animate
+# def main():
+#     population_size = 50
+#     population = Population(population_size)
+#     while True:
+#         population.check_population()
+#         bestSolution, maxFit= population.evaluate( )
+#         print("Best solution: ", maxFit)
+#         if maxFit == 64:
+#             print('done')
+#             break
+#         elif maxFit > 40:
+#             print('done')
+#             break
+#         population.create_new_generation ()
  
 
 def run_genetic_algorithm():
@@ -22,9 +25,10 @@ def run_genetic_algorithm():
         print("Best solution: ", fitness)
         if fitness == 64:
             print(f"Solution found in generation {population.generation}!")
-            break
+            return(best_knight.path)
         population.create_new_generation()
 
-run_genetic_algorithm()
+movs = run_genetic_algorithm()
+animate(movs)
 
 # main()

@@ -6,6 +6,7 @@ class Population:
         self.knights = [Knight() for _ in range(population_size)]
         self.generation = 1
 
+# done
     def check_population(self):
         for knight in self.knights:
             knight.check_moves()
@@ -21,9 +22,7 @@ class Population:
 
     def create_new_generation(self):
         new_generation = []
-        print('gen : ',self.generation)
         while len(new_generation) < self.population_size:
-            
             parent1 = self.tournament_selection()
             parent2 = self.tournament_selection()
             offspring1 = parent1.chromosome.crossover(parent2.chromosome)
@@ -34,3 +33,7 @@ class Population:
             new_generation.append(Knight(offspring2))
         self.knights = new_generation[:self.population_size]
         self.generation += 1
+
+        for knight in self.knights:
+            knight.position = (0, 0)
+            knight.path = [knight.position]
