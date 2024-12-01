@@ -1,5 +1,23 @@
 from  Population import Population
-from animation import animate
+from animation import animate_with_choice
+import pygame
+import sys
+
+pygame.init()
+
+
+board_size = 8
+square_size = 80
+WIDTH = board_size * square_size
+HEIGHT = board_size * square_size
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("the Knight's Tour problem using genetic algorithm")
+black = (0, 0, 0)
+white = (255,255,255)
+green = (0,255,0)
+RED = (255, 0, 0)
+
+
 # def main():
 #     population_size = 50
 #     population = Population(population_size)
@@ -27,8 +45,10 @@ def run_genetic_algorithm():
             print(f"Solution found in generation {population.generation}!")
             return(best_knight.path)
         population.create_new_generation()
+        
+
 
 movs = run_genetic_algorithm()
-animate(movs)
 
-# main()
+animate_with_choice(movs)
+
