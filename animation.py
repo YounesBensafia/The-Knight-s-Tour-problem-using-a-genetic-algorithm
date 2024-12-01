@@ -74,8 +74,19 @@ def animate(path):
     path_index = 0
     clock = pygame.time.Clock()
     running = True
+    first = 1
 
     while running:
+        
+        if first == 1:
+            try:
+                background_sound = pygame.mixer.Sound('background_music.mp3')
+                background_sound.play()
+                first = 0
+            except:
+                first = 0
+                pass
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
@@ -91,11 +102,15 @@ def animate(path):
             if current_position not in passed_positions:
                 passed_positions.append(current_position)
             draw_knight(current_position)
+            try:
+                click_sound = pygame.mixer.Sound('click.wav')
+                click_sound.play()
+            except:
+                pass
             path_index += 1
 
         pygame.display.flip()
         clock.tick(2)
-
     pygame.quit()
 
 def load_background_image(image_path):
@@ -166,6 +181,12 @@ def animate_with_choice(path):
                 running = False
             
             if event.type == pygame.MOUSEBUTTONDOWN:
+                mouse_pos = event.pos
+                try:
+                    click_sound = pygame.mixer.Sound('click.wav')  # Load the sound file
+                    click_sound.play()  # Play the sound
+                except:
+                    pass
                 mouse_pos = event.pos
                 
                 if ok_button.collidepoint(mouse_pos):
