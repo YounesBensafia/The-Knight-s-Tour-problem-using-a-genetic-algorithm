@@ -108,9 +108,9 @@ def animate(path):
             except:
                 pass
             path_index += 1
-
         pygame.display.flip()
         clock.tick(2)
+        
     pygame.quit()
 
 def load_background_image(image_path):
@@ -183,32 +183,35 @@ def animate_with_choice(path):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_pos = event.pos
                 try:
-                    click_sound = pygame.mixer.Sound('click.wav')  # Load the sound file
-                    click_sound.play()  # Play the sound
+
+                    bingo = pygame.mixer.Sound('bingo.wav')
+                    bingo.play()
+                    click_sound = pygame.mixer.Sound('click.wav')
+                    click_sound.play()
                 except:
                     pass
-                mouse_pos = event.pos
                 
                 if ok_button.collidepoint(mouse_pos):
                     animate(path)
                     running = False
                 
-                elif no_button.collidepoint(mouse_pos):
-                    # Fade out effect
-                    fade_surface = pygame.Surface((WIDTH, HEIGHT))
-                    fade_surface.fill((255, 255, 255))
-                    for alpha in range(0, 300, 15):
-                        fade_surface.set_alpha(alpha)
-                        screen.blit(fade_surface, (0, 0))
-                        pygame.display.flip()
-                        pygame.time.delay(30)
+                # elif no_button.collidepoint(mouse_pos):
+                #     # Fade out effect
+                #     fade_surface = pygame.Surface((WIDTH, HEIGHT))
+                #     fade_surface.fill((255, 255, 255))
 
-                    result_text = result_font.render("Ben", True, TEXT_COLOR)
-                    result_rect = result_text.get_rect(center=(WIDTH//2, HEIGHT//2 + 100))
-                    screen.blit(result_text, result_rect)
-                    pygame.display.flip()
-                    pygame.time.wait(2000)
-                    running = False
+                #     for alpha in range(0, 300, 15):
+                #         fade_surface.set_alpha(alpha)
+                #         screen.blit(fade_surface, (0, 0))
+                #         pygame.display.flip()
+                #         pygame.time.delay(30)
+
+                #     result_text = result_font.render("Ben", True, TEXT_COLOR)
+                #     result_rect = result_text.get_rect(center=(WIDTH//2, HEIGHT//2 + 100))
+                #     screen.blit(result_text, result_rect)
+                #     pygame.display.flip()
+                #     pygame.time.wait(2000)
+                #     running = False
 
         mouse_pos = pygame.mouse.get_pos()
         if ok_button.collidepoint(mouse_pos):
