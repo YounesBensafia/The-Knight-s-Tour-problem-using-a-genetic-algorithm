@@ -83,6 +83,9 @@ solution on an interface, as illustrated in Figure 2.
 ![image](https://github.com/user-attachments/assets/13441d65-eca6-4279-996f-6670c5c12bb6)
 
 
-https://github.com/user-attachments/assets/9bd127df-6628-4d40-a34a-148a586b985a
+
+https://github.com/user-attachments/assets/76e234a3-969d-49f0-8558-447ba2233882
+
+
 
 
