@@ -52,7 +52,7 @@ Each knight stores the following:
 
 * `move_forward(direction)`:
   Moves the knight in one of 8 directions:
-
+![image](https://github.com/user-attachments/assets/f1114825-b354-4484-a29f-92aecb3727f5)
   1. up-right
   2. right-up
   3. right-down
@@ -62,7 +62,7 @@ Each knight stores the following:
   7. left-up
   8. up-left
      Computes the new position after the move.
-![image](https://github.com/user-attachments/assets/f1114825-b354-4484-a29f-92aecb3727f5)
+
 * `move_backward(direction)`:
   Reverts the knight’s position if the move was illegal.
 
