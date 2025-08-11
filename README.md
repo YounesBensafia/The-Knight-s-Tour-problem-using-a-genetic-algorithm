@@ -3,81 +3,130 @@
 <img height="200" alt="knights" src="https://github.com/user-attachments/assets/5fac0311-72cb-4485-89fe-19903a15f108" width="100%"/>
 
 
-The knight in chess is the piece that is shaped like a horse's head. The knight can move in an "L-shaped" pattern, advancing two squares in one direction and then having the option to turn either right or left. If we display all the current possible moves for the knight, the resulting pattern is as follows (see Figure 1).
+The knight in chess is the piece that is shaped like a horse's head. The knight can move in an "L-shaped" pattern, advancing two squares in one direction and then having the option to turn either right or left. If we display all the current possible moves for the knight, the resulting pattern is as follows.
 
 ![image](https://github.com/user-attachments/assets/f1114825-b354-4484-a29f-92aecb3727f5)
 
 
-The knight can move to the square marked in red and then repeat the process on the new square. A knight's
-tour is a sequence of moves that a knight can make to visit every chess square exactly once.
-The objective of this assignment is to tackle the knight's tour problem using a genetic algorithm. For this
-purpose, we will create the following classes:
-1. Chromosome class: In the knight's tour problem, we will use the moves made by the knight as the
-genes of its chromosome. we define the class Chromosome with the following attributes:
-* genes: an array of length 63 representing the knight's moves. Each gene represents one of the 8
-possible moves.
-In the Chromosome class, you should also define the following functions:
-* init (genes): The function that creates a new chromosome. If no genes are given (as in the case of
-chromosomes in the initial population), the chromosome will generate a random set of genes.
-* crossover (partner): The crossover function takes another chromosome as input and combines genes
-from both chromosomes to form the new offspring. For this problem, we will use the single-point
-crossover
 
-mutation ( ): The mutation introduces a probability for genes to mutate, implying that they will
-transform into a random move. This feature motivates the Genetic Algorithm to explore new moves.
+The knight can move to the square marked in red and then repeat the process on the new square.
+A **knight's tour** is a sequence of moves where the knight visits every square on the chessboard exactly once.
 
-2. Knight class: Each knight will store these variables:
-* position: the coordinates (x, y) for the knight's current position
-* chromosome: the sequence of moves taken by the knight.
-* path: the list of knight's positions after applying the moves defined in the chromosome.
-* fitness: the value of the fitness function. The maximum value is 64, representing the number of squares
-on the chessboard.
-In the Knight class, the following functions should be defined:
-* init (chromosome): This function creates a new knight. If no chromosome is given (as in the case of
-knights in the initial population), the knight will generate a new chromosome. Additionally, this
-function sets the current position of the knight to (0, 0), the fitness value to 0, and saves the initial
-position into the path list.
-* move_forward (direction): This function moves the knight in one of the 8 directions (1: up-right, 2:
-right-up, 3: right-down, 4: down-right, 5: down-left, 6: left-down, 7: left-up, 8: up-left). It generates
-the new position of the knight after applying a move.
-* move_backward (direction): This function allows the knight to trace back if the applied move is
-illegal.
-* check_moves ( ): This function checks the validity of each move in the chromosome array. A move
-is considered invalid if, when applied using the function move_forward (direction), it places the
-knight outside the chessboard or in a position that has already been visited. If a move is illegal, this
-function corrects it by canceling the move using move_backward (direction). It then tests other
-moves by cycling forward or backward. The direction of the cycle is determined randomly and remains
-the same for the entire set of moves in the chromosome. If no valid move is found, the last move is
-retained. For example, if the current move is 4: down-right and is illegal, and a cycle forward is chosen,
-the moves will be selected in the order: 5: down-left, 6: left-down, 7: left-up, 8: up-left, 1: up-right,
-2: right-up, 3: right-down. If a cycle backward is chosen, the moves will be selected in the order: 3:
-right-down, 2: right-up, 1: up-right, 8: up-left, 7: left-up, 6: left-down, 5: down-left.
-* evaluate_fitness ( ): This function loops through the knight’s path (the list of the knight’s visited
-positions) and increments the fitness value by one until an invalid move is encountered. If the knight
-has visited all squares on the chessboard, the fitness value is equal to 64.
-3. Population Class: The population class will consist of the following attributes:
-* population_size: The size of the population, e.g., 50.
-* generation: The number of generations, initially set to 1.
-* knights: A population is composed of a list of knights.
-In the Population class, the following functions should be defined:
-* init(population_size): This function generates the list of knights for the initial population. It also
-initializes the number of generations to 1.
-* check_population(): This function loops through the knights of the population and checks the validity
-of the moves of each knight using the function check_moves() defined in the Knight class.
-* evaluate(): This function evaluates the fitness of every individual/knight in the population using the
-function evaluate_fitness() defined in the Knight class and returns the best knight with its fitness.
-* tournament_selection(size): To select parental combinations for crossover, tournament selection is
-employed with a sample size of n. In tournament selection, n knights are randomly sampled from the
-population, and a tournament is conducted on these samples by choosing the two best ones based on
-their fitness values. A sample size of 3 is taken.
-* create_new_generation(): This function creates a population for the new generation with the same
-size as the current population. In each iteration, two parents are selected using the function
-tournament_selection(size). The crossover between the parental combination is then applied to
-generate two new offspring using the function crossover(partner) defined in the Chromosome class.
-Afterward, mutation is applied to each offspring using the function mutation() defined in the
-Chromosome class. This function also increments the number of generations.
-5. The main function: The main function applies a run of the genetic algorithm and displays the optimal
-solution on an interface, as illustrated in Figure 2.
+---
+
+## Objective
+
+The goal of this assignment is to solve the knight's tour problem using a **genetic algorithm** by creating the following classes:
+
+---
+
+## 1. Chromosome Class
+
+In the knight's tour problem, the **moves made by the knight** represent the genes of the chromosome.
+
+**Attributes:**
+
+* `genes`: an array of length 63 representing the knight's moves. Each gene corresponds to one of the 8 possible moves.
+
+**Functions:**
+
+* `__init__(genes)`:
+  Creates a new chromosome. If no genes are provided (as in the initial population), it generates a random set of genes.
+
+* `crossover(partner)`:
+  Combines genes from this chromosome and another (`partner`) using **single-point crossover** to create new offspring.
+
+* `mutation()`:
+  Introduces mutations by randomly changing some genes with a certain probability, helping the genetic algorithm explore new moves.
+
+---
+
+## 2. Knight Class
+
+Each knight stores the following:
+
+* `position`: coordinates `(x, y)` for the knight's current position.
+* `chromosome`: sequence of moves taken by the knight.
+* `path`: list of knight's positions after applying moves from the chromosome.
+* `fitness`: fitness value, with a maximum of 64 (total squares on the chessboard).
+
+**Functions:**
+
+* `__init__(chromosome)`:
+  Creates a new knight. If no chromosome is provided, generates a new one. Sets the initial position to `(0, 0)`, fitness to 0, and saves the initial position in `path`.
+
+* `move_forward(direction)`:
+  Moves the knight in one of 8 directions:
+
+  1. up-right
+  2. right-up
+  3. right-down
+  4. down-right
+  5. down-left
+  6. left-down
+  7. left-up
+  8. up-left
+     Computes the new position after the move.
+
+* `move_backward(direction)`:
+  Reverts the knight’s position if the move was illegal.
+
+* `check_moves()`:
+  Checks validity of each move in the chromosome. A move is invalid if it places the knight outside the board or on a previously visited square.
+  If invalid, cancels the move using `move_backward()` and tests other moves by cycling forward or backward.
+  The cycling direction is chosen randomly at the start and remains consistent for the entire chromosome.
+
+  * **Forward cycle example:** For current move `4 (down-right)`, the order to test is:
+    5 (down-left), 6 (left-down), 7 (left-up), 8 (up-left), 1 (up-right), 2 (right-up), 3 (right-down)
+  * **Backward cycle example:** For current move `4 (down-right)`, the order to test is:
+    3 (right-down), 2 (right-up), 1 (up-right), 8 (up-left), 7 (left-up), 6 (left-down), 5 (down-left)
+    If no valid move is found, the last move is retained.
+
+* `evaluate_fitness()`:
+  Calculates the fitness by iterating through the knight’s path and counting valid visited squares until an invalid move is encountered.
+  Fitness is 64 if all squares are visited.
+
+---
+
+## 3. Population Class
+
+Represents a group of knights.
+
+**Attributes:**
+
+* `population_size`: e.g., 50.
+* `generation`: number of generations (initially 1).
+* `knights`: list of knights in the population.
+
+**Functions:**
+
+* `__init__(population_size)`:
+  Initializes the population with knights and sets generation to 1.
+
+* `check_population()`:
+  Loops through all knights and checks their moves’ validity using `check_moves()`.
+
+* `evaluate()`:
+  Evaluates the fitness of every knight using `evaluate_fitness()`. Returns the best knight and its fitness.
+
+* `tournament_selection(size)`:
+  Selects parents for crossover using tournament selection with sample size `n` (e.g., 3).
+  Randomly samples `n` knights and selects the two best based on fitness.
+
+* `create_new_generation()`:
+  Creates a new population of the same size. For each pair of offspring:
+
+  * Select parents with `tournament_selection(size)`.
+  * Generate offspring via `crossover(partner)` on their chromosomes.
+  * Apply `mutation()` to offspring chromosomes.
+  * Increment generation count.
+
+---
+
+## 4. Main Function
+
+Runs the genetic algorithm and displays the optimal solution through a graphical interface.
+
 
 
 ![image](https://github.com/user-attachments/assets/74bd702d-0723-4837-bffb-39daf31d3bd9)
