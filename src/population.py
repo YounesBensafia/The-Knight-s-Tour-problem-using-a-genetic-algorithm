@@ -1,4 +1,4 @@
-from Knight import Knight
+from knights.knight_v1 import Knight
 import random
 class Population:
     def __init__(self, population_size=50):

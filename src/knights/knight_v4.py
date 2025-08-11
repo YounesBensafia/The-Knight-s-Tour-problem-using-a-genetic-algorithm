@@ -55,8 +55,7 @@ def ac_3(csp):
         (xi, xj) = agenda.pop(0)
         if revise(csp, xi, xj):
             if not csp.domains[xi]:
-                return False  # Domain wiped out; no solution possible
-            # Add all arcs involving xi except (xi, xj)
+                return False 
             for xk in [neighbor for neighbor in csp.variables if neighbor != xj]:
                 agenda.append((xk, xi))
     return True

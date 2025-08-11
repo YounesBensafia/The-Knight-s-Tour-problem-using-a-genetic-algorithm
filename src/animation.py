@@ -9,7 +9,6 @@ height = board_size * square_size
 screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Knight's Tour Animation")
 
-# Colors
 white = (255, 255, 255)
 black = (10, 10, 0)
 green = (0, 255, 0)
@@ -17,7 +16,7 @@ light_brown = (161,122,67)
 dark_brown = (76,42,33)
 
 try:
-    knight_image = pygame.image.load("knight.png")
+    knight_image = pygame.image.load("images/knight.png")
     image_size = square_size - 20 
     aspect_ratio = knight_image.get_width() / knight_image.get_height()
     

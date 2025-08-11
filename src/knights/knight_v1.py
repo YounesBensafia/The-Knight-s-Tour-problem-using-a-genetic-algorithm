@@ -1,4 +1,4 @@
-from Chromosome import Chromosome
+from chromosome import Chromosome
 import random
 
 class Knight:
