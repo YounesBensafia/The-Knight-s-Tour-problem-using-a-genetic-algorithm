@@ -63,7 +63,6 @@ Each knight stores the following:
   8. up-left
      Computes the new position after the move.
 ![image](https://github.com/user-attachments/assets/f1114825-b354-4484-a29f-92aecb3727f5)
-
 * `move_backward(direction)`:
   Reverts the knight’s position if the move was illegal.
 
