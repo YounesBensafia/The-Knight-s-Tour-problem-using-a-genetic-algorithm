@@ -51,18 +51,21 @@ Each knight stores the following:
   Creates a new knight. If no chromosome is provided, generates a new one. Sets the initial position to `(0, 0)`, fitness to 0, and saves the initial position in `path`.
 
 * `move_forward(direction)`:
+  
   Moves the knight in one of 8 directions:
-![image](https://github.com/user-attachments/assets/f1114825-b354-4484-a29f-92aecb3727f5)
-  1. up-right
-  2. right-up
-  3. right-down
-  4. down-right
-  5. down-left
-  6. left-down
-  7. left-up
-  8. up-left
-     Computes the new position after the move.
-
+  
+  ![Knight Moves](https://github.com/user-attachments/assets/f1114825-b354-4484-a29f-92aecb3727f5)
+  
+  1. up-right  
+  2. right-up  
+  3. right-down  
+  4. down-right  
+  5. down-left  
+  6. left-down  
+  7. left-up  
+  8. up-left  
+  
+  Computes the new position after the move.
 * `move_backward(direction)`:
   Reverts the knight’s position if the move was illegal.
 
