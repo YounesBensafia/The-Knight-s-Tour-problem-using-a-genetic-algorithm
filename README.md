@@ -135,9 +135,6 @@ Runs the genetic algorithm and displays the optimal solution through a graphical
 
 
 
-![image](https://github.com/user-attachments/assets/13441d65-eca6-4279-996f-6670c5c12bb6)
-
-
 
 https://github.com/user-attachments/assets/76e234a3-969d-49f0-8558-447ba2233882
 
